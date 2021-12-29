@@ -3,4 +3,5 @@ export interface ListadoCompras {
     id_mercadolibre: String;
     customerpo: String;
     guia_rastreo: String;
+    fecha: Date;
 }

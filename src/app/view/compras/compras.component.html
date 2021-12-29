@@ -1,22 +1,38 @@
-<table class="table">
+<div class="container m-5">
+    <label for="">Buscar por Customer PO</label>
+    <input type="text" class="form-control mr-sm-2 col-12" placeholder="Search" #txtSearch (keyup)="buscarCompra(txtSearch.value)">
+</div>
+<table class="table table-responsive-lg table-hover">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Nota de Venta</th>
+            <th scope="col aling-center">Nota de Venta</th>
             <th scope="col">IdMercado Libre</th>
-            <th scope="col">Customer Pro</th>
+            <th scope="col">Customer PO</th>
             <th scope="col">Guia Rastreo</th>
-            <th scope="col">Link</th>
+            <th scope="col">Fecha</th>
+            <th scope="col aling-center">Acciones</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let compras of comprasListado">
+        <tr *ngFor="let compras of comprasListado | filtro:pages:search">
             <td> {{ compras.nota_de_venta}} </td>
             <td> {{ compras.id_mercadolibre }}</td>
             <td> {{ compras.customerpo }}</td>
             <td> {{ compras.guia_rastreo }}</td>
-            <td> <button class="btn btn-danger" (click)="descargar(compras.customerpo)">Descargar Guia</button> </td>
-
+            <td> {{ compras.fecha }}</td>
+            <td> <button class="btn btn-primary mr-3" (click)="descargar(compras.customerpo)">Descargar Guia</button>
+                <button class="btn btn-danger">Borrar</button> </td>
         </tr>
-
     </tbody>
+
 </table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" (click)="previuspage()">Previous</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" (click)="nextpage()" [hidden]="(comprasListado | filtro:pages:search).length === 0">Next</a>
+        </li>
+    </ul>
+</nav>

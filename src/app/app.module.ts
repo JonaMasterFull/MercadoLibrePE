@@ -8,13 +8,15 @@ import { HeaderComponent } from './plantilla/header/header.component';
 import { FooterComponent } from './plantilla/footer/footer.component';
 import { ComprasComponent } from './view/compras/compras.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FiltroPipe } from './pipes/filtro.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ComprasComponent
+    ComprasComponent,
+    FiltroPipe
   ],
   imports: [
     BrowserModule,
