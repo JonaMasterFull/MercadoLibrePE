@@ -9,6 +9,11 @@ import { FooterComponent } from './plantilla/footer/footer.component';
 import { ComprasComponent } from './view/compras/compras.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FiltroPipe } from './pipes/filtro.pipe';
+import { AllguiasComponent } from './view/allguias/allguias.component';
+import { Filtro2Pipe } from './pipes/filtro2.pipe';
+import { Filtro3Pipe } from './pipes/filtro3.pipe';
+import { Filtro4Pipe } from './pipes/filtro4.pipe';
+import { Filtro5Pipe } from './pipes/filtro5.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { FiltroPipe } from './pipes/filtro.pipe';
     HeaderComponent,
     FooterComponent,
     ComprasComponent,
-    FiltroPipe
+    FiltroPipe,
+    AllguiasComponent,
+    Filtro2Pipe,
+    Filtro3Pipe,
+    Filtro4Pipe,
+    Filtro5Pipe
   ],
   imports: [
     BrowserModule,

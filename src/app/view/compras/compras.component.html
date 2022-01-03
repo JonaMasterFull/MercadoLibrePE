@@ -1,38 +1,63 @@
-<div class="container m-5">
-    <label for="">Buscar por Customer PO</label>
-    <input type="text" class="form-control mr-sm-2 col-12" placeholder="Search" #txtSearch (keyup)="buscarCompra(txtSearch.value)">
-</div>
-<table class="table table-responsive-lg table-hover">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col aling-center">Nota de Venta</th>
-            <th scope="col">IdMercado Libre</th>
-            <th scope="col">Customer PO</th>
-            <th scope="col">Guia Rastreo</th>
-            <th scope="col">Fecha</th>
-            <th scope="col aling-center">Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let compras of comprasListado | filtro:pages:search">
-            <td> {{ compras.nota_de_venta}} </td>
-            <td> {{ compras.id_mercadolibre }}</td>
-            <td> {{ compras.customerpo }}</td>
-            <td> {{ compras.guia_rastreo }}</td>
-            <td> {{ compras.fecha }}</td>
-            <td> <button class="btn btn-primary mr-3" (click)="descargar(compras.customerpo)">Descargar Guia</button>
-                <button class="btn btn-danger">Borrar</button> </td>
-        </tr>
-    </tbody>
+<div class="container-fluid">
+    <div class="row mb-5 mt-5">
+        <div class="col-lg-3 col-sm-12 mb-5">
+            <label for="">Buscar por Customer PO</label>
+            <input type="text" class="form-control" placeholder="Search Customer PO" #txtSearchCPO (keyup)="buscarCustomerPO(txtSearchCPO.value)">
+            <br>
+            <label for="">Buscar por Nota de Venta</label>
+            <input type="text" class="form-control" placeholder="Search Nota de Venta" #txtSearchNV (keyup)="buscarNotaVenta(txtSearchNV.value)">
+            <br>
+            <label for="">Buscar por Id Mercado Libre</label>
+            <input type="text" class="form-control" placeholder="Search Id Mercado Libre" #txtSearchML (keyup)="buscarMercadoLibre(txtSearchML.value)">
+            <br>
+            <label for="">Buscar por Guia Rastreo</label>
+            <input type="text" class="form-control" placeholder="Search Guia Rastreo" #txtSearchGR (keyup)="buscarGuiaRastreo(txtSearchGR.value)">
 
-</table>
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link" (click)="previuspage()">Previous</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" (click)="nextpage()" [hidden]="(comprasListado | filtro:pages:search).length === 0">Next</a>
-        </li>
-    </ul>
-</nav>
+            <br>
+            <label for="">Buscar por fecha</label>
+            <input type="date" class="form-control" #txtSearchF (input)="buscarFecha(txtSearchF.value)">
+        </div>
+        <div class="col-lg-9 col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <caption>Mercado Libre Guide List</caption>
+                    <thead class="thead">
+                        <tr class="text-center">
+                            <th scope="col">Nota de Venta</th>
+                            <th scope="col">IdMercado Libre</th>
+                            <th scope="col">Customer PO</th>
+                            <th scope="col">Guia Rastreo</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center datos">
+                        <tr *ngFor="let compras of comprasListado | filtro:pages:search | filtro2:pages2:search2 | filtro3:pages3:search3 | filtro4:pages4:search4 | filtro5:pages5:search5 ">
+                            <td> {{ compras.nota_de_venta}} </td>
+                            <td> {{ compras.id_mercadolibre }}</td>
+                            <td> {{ compras.customerpo }}</td>
+                            <td> {{ compras.guia_rastreo }}</td>
+                            <td><i class="bi bi-calendar3"></i> {{ compras.fecha }}</td>
+                            <td class="col-2"> <button class="btn btn-primary btn-sm me-2 mb-2" (click)="descargar(compras.customerpo)"><i class="bi bi-cloud-arrow-down"></i>  Descargar Guia</button>
+                                <button class="btn btn-danger btn-sm"><i class="bi bi-journal-x"></i> Eliminar</button> </td>
+                        </tr>
+                    </tbody>
+
+
+                </table>
+            </div>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link previuspage" (click)="previuspage()" *ngIf="pages > 0;">Previous</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link nextpage" (click)="nextpage()" [hidden]="(comprasListado | filtro:pages:search).length === 0">Next</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</div>

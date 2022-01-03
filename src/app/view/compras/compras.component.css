@@ -1,0 +1,13 @@
+.nextpage {
+    cursor: pointer;
+    user-select: none;
+}
+
+.previuspage {
+    cursor: pointer;
+    user-select: none;
+}
+
+.datos {
+    vertical-align: middle
+}
