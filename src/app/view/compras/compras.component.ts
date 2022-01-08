@@ -19,6 +19,7 @@ export class ComprasComponent implements OnInit {
   public pages3: number = 0;
   public pages4: number = 0;
   public pages5: number = 0;
+  
   public search: string = '';
   public search2: string = '';
   public search3: string = '';
@@ -28,7 +29,7 @@ export class ComprasComponent implements OnInit {
   constructor(private api:ServiceService, private router:Router) { }
 
   ngOnInit(): void {
-    this.api.getallCompras().subscribe(data => {
+    this.api.getguias().subscribe(data => {
       console.log(data);
       this.comprasListado = data;
 })

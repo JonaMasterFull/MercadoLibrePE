@@ -15,6 +15,11 @@ import { Filtro3Pipe } from './pipes/filtro3.pipe';
 import { Filtro4Pipe } from './pipes/filtro4.pipe';
 import { Filtro5Pipe } from './pipes/filtro5.pipe';
 
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +36,12 @@ import { Filtro5Pipe } from './pipes/filtro5.pipe';
   imports: [
     BrowserModule,
     APP_ROUTING,
-    HttpClientModule
+    HttpClientModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

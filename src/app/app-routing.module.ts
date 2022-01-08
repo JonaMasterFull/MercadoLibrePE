@@ -4,9 +4,9 @@ import { ComprasComponent } from './view/compras/compras.component';
 import { AllguiasComponent } from './view/allguias/allguias.component';
 
 const APP_ROUTES: Routes = [
-   { path: 'compras', component: ComprasComponent},
+   { path: 'guias', component: ComprasComponent},
    { path: 'allguia', component: AllguiasComponent},
-   { path: '**', redirectTo: 'compras',pathMatch: 'full'}
+   { path: '**', redirectTo: 'guias',pathMatch: 'full'}
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES, { useHash: true})

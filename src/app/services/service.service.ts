@@ -7,14 +7,22 @@ import { ListadoCompras } from '../models/compras';
   providedIn: 'root'
 })
 export class ServiceService {
+  
 
   url:String = "https://appleamaze.herokuapp.com/";
 
   constructor(private http:HttpClient) { }
 
-  getallCompras():Observable<ListadoCompras[]>{
+  getguias():Observable<ListadoCompras[]>{
     let direccion = this.url + "guias";
     return this.http.get<ListadoCompras[]>(direccion);
   }
+
+  getallguias():Observable<ListadoCompras[]>{
+    let direccion = this.url + "todos";
+    return this.http.get<ListadoCompras[]>(direccion);
+  }
+
+
 
 }
