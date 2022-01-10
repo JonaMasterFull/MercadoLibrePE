@@ -22,7 +22,9 @@ export class ServiceService {
     let direccion = this.url + "todos";
     return this.http.get<ListadoCompras[]>(direccion);
   }
-
-
-
+  
+  deleteguias(id :String){
+    let direccion = this.url + "borrar/" + id;
+    return this.http.delete(direccion);  
+  }
 }

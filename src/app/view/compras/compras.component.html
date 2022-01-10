@@ -23,6 +23,7 @@
                     <caption>Mercado Libre Guide List</caption>
                     <thead class="thead">
                         <tr class="text-center">
+                            <th scope="col" hidden>Id</th>
                             <th scope="col">Nota de Venta</th>
                             <th scope="col">IdMercado Libre</th>
                             <th scope="col">Customer PO</th>
@@ -32,14 +33,17 @@
                         </tr>
                     </thead>
                     <tbody class="text-center datos">
-                        <tr *ngFor="let compras of comprasListado | filtro:pages:search | filtro2:pages2:search2 | filtro3:pages3:search3 | filtro4:pages4:search4 | filtro5:pages5:search5 ">
+                        <tr *ngFor="let compras of comprasListado | filtro:pages:search | filtro2:pages2:search2 | filtro3:pages3:search3 | filtro4:pages4:search4 | filtro5:pages5:search5 ; let i = index">
+                            <td hidden>{{ i + 1 }}</td>
                             <td> {{ compras.nota_de_venta}} </td>
                             <td> {{ compras.id_mercadolibre }}</td>
                             <td> {{ compras.customerpo }}</td>
                             <td> {{ compras.guia_rastreo }}</td>
                             <td><i class="bi bi-calendar3"></i> {{ compras.fecha }}</td>
                             <td class="col-2"> <button class="btn btn-primary btn-sm me-2 mb-2" (click)="descargar(compras.customerpo)"><i class="bi bi-cloud-arrow-down"></i>  Descargar Guia</button>
-                                <button class="btn btn-danger btn-sm"><i class="bi bi-journal-x"></i> Eliminar</button> </td>
+                                <button class="btn btn-danger btn-sm" (click)="delete(compras.customerpo, i)"><i class="bi bi-journal-x"></i> Eliminar</button>
+                            </td>
+
                         </tr>
                     </tbody>
 

@@ -3,7 +3,10 @@ import { Router } from '@angular/router';
 import { ServiceService } from '../../services/service.service';
 import { ListadoCompras } from '../../models/compras';
 //Exportar PDF
-import * as pdfJS from 'print-js'
+import * as pdfJS from 'print-js';
+
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-compras',
@@ -36,8 +39,46 @@ export class ComprasComponent implements OnInit {
   }
   descargar(customerpo : String){
     pdfJS(this.href + customerpo + '.pdf');
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Descargando',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
+  delete(id: String, i : number){
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Si, Quiero Eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.deleteguias(id).subscribe();
+        this.comprasListado.splice(i, 1);
+        
+        Swal.fire(
+          'Eliminado!',
+          'Su archivo ha sido eliminado',
+          'success'
+        )
+      
+      }else if (result.dismiss === Swal.DismissReason.cancel){
+        Swal.fire(
+          'Cancelado',
+          'Tu Archivo esta a salvo :)',
+          'error'
+        )
+      }
+      
+    })
+  }
 
   nextpage(){
     if(this.pages){
