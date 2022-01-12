@@ -1,20 +1,25 @@
 <div class="container">
     <div class="row mt-5">
-        <div class="col-lg-6" *ngFor="let lista of comprasListado">
+        <div class="col-lg-12">
+            <label for="">Buscar por Customer PO</label>
+            <input type="text" class="form-control" placeholder="Search Customer PO" #txtSearchCPO (keyup)="buscarCustomerPO(txtSearchCPO.value)">
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-6" *ngFor="let lista of comprasListado | filtro:pages:search">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
-                    <div class="col-md-4">
-
-                    </div>
-                    <div class="col-md-8 ">
+                    <div class="col-md-12">
                         <div class="card-body ">
-                            <h5 class="card-title text-center ">Nota: {{ lista.nota_de_venta }}</h5>
+                            <h5 class="card-title col-sm-12 text-center ">Nota: {{ lista.nota_de_venta }}</h5>
                             <div class="row mt-2 ">
-                                <div class="col-lg-6 text-center ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 text-center ">
                                     <p class="card-text lead ">ID ML</p>
                                     <p class="card-text bold ">{{ lista.id_mercadolibre }}</p>
                                 </div>
-                                <div class="col-lg-6 text-center ">
+                                <div class="col-lg-6 col-md-6  col-sm-6 text-center ">
                                     <p class="card-text lead ">Guia Rastreo</p>
                                     <p class="card-text bold ">{{ lista.guia_rastreo }}</p>
                                 </div>
@@ -23,19 +28,17 @@
                                     <p class="card-text bold ">{{ lista.customerpo }}</p>
                                 </div>
                             </div>
-                            <p class="card-text mt-2 text-center ">Fecha: <small class="text-muted ">{{ lista.fecha }}</small> <i class="bi bi-calendar3 "></i> </p>
+                            <p class="card-text mt-2 text-center ">Fecha: <small class="text-muted "> {{ lista.fecha }} </small> <i class="bi bi-calendar3 "></i> </p>
                             <div class="row ">
-                                <div class="col-lg-6 text-center ">
-                                    <a class="btn btn-primary btn-sm "><i class="bi bi-cloud-arrow-down "></i> Descargar Guia</a>
-                                </div>
-                                <div class="col-lg-6 text-center ">
-                                    <a class="btn btn-danger btn-sm "><i class="bi bi-journal-x "></i> Eliminar</a>
+                                <div class="col-lg-12 col-md-12 col-sm-12 text-center ">
+                                    <a class="btn btn-primary btn-sm " (click)="descargar(lista.customerpo)"><i class="bi bi-cloud-arrow-down "></i> Descargar Guia</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <br>
         </div>
     </div>
 </div>

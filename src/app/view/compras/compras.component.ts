@@ -48,6 +48,8 @@ export class ComprasComponent implements OnInit {
     })
   }
 
+
+
   delete(id: String, i : number){
     Swal.fire({
       title: 'Estas seguro?',
@@ -62,7 +64,7 @@ export class ComprasComponent implements OnInit {
       if (result.isConfirmed) {
         this.api.deleteguias(id).subscribe();
         this.comprasListado.splice(i, 1);
-        
+        this.router.navigateByUrl('/guias');
         Swal.fire(
           'Eliminado!',
           'Su archivo ha sido eliminado',
